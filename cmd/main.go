@@ -2,14 +2,12 @@ package main
 
 import (
 	"fmt"
-	"log"
-	"net/http"
+	"github.com/ErrNotNill/booksAndAuthors/pkg/repository"
 )
 
 func main() {
-	fmt.Println("Hello")
-	err := http.ListenAndServe(":8000", nil)
-	if err != nil {
-		log.Printf(err.Error())
-	}
+	//test connection
+	pg := new(repository.Pgx)
+	pg.PostgresInit()
+	fmt.Println("postgres connected")
 }

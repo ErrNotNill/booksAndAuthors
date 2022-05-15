@@ -1,0 +1,86 @@
+syntax = "proto3";
+
+package library;
+//option go_package = "github.com/protocolbuffers/protobuf-go";
+option go_package = "service/grpc";
+
+message Book {
+  string title = 1;
+  int32 id = 2;
+  string pid=3;
+  string author=4;
+}
+
+message Author {
+  string name = 1;
+  int32 id = 2;
+  repeated Book book=3;
+}
+
+message CreateBookRequest {
+  Book library = 1;
+}
+
+message CreateBookResponse {
+  Book library = 1; // будет иметь идентификатор покемона
+}
+
+message ReadBookRequest {
+  string pid = 1;
+}
+
+message ReadBookResponse {
+  Book library = 1;
+}
+
+message UpdateBookRequest {
+  Book library = 1;
+}
+
+message UpdateBookResponse {
+  Book library = 1;
+}
+
+message DeleteBookRequest {
+  string pid = 1;
+}
+
+message DeleteBookResponse {
+  string pid = 1;
+}
+
+message ListBookRequest {
+
+}
+
+message ListBookResponse {
+  Book library = 1;
+}
+
+service BooksService {
+  rpc CreateBook (CreateBookRequest) returns (CreateBookResponse);
+  rpc ReadBook (ReadBookRequest) returns (ReadBookResponse); // возвращает NOT_FOUND, если не найдено
+  rpc UpdateBook (UpdateBookRequest) returns (UpdateBookResponse); // возвращает NOT_FOUND, если не найдено
+  rpc DeleteBook (DeleteBookRequest) returns (DeleteBookResponse); // возвращает NOT_FOUND, если не найдено
+  rpc ListBooks (ListBookRequest) returns (stream ListBookResponse); // Для потоковой передачи с сервера
+}
+
+/*todo struct Repository with 2 Interfaces in package repository
+BooksCrud:
+   CreateBook
+   GetBook
+   GetAllBooks
+   UpdateBook
+   DeleteBook
+AuthorsCrud:
+   CreateAuthor
+   GetAuthor
+   GetAllAuthors
+   UpdateAuthor
+   DeleteAuthor
+*/
+
+/* todo 1 Handler struct with 1 field - pointer to struct Repository in package repository
+
+
+ */
