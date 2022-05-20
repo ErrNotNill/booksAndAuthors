@@ -10,5 +10,5 @@ make migrate
 ```
 Тестовые данные:
 ```diff
-make migrate
+...
 ```

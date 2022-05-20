@@ -1,7 +1,5 @@
 version: '3.8'
 
-#dbase=books_authors, name=root, pass=root, host=localhost, port 3306
-
 services:
   books:
     container_name: books-authors
@@ -21,12 +19,14 @@ services:
       - MYSQL_DATABASE=books_authors
       - MYSQL_USER=root
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
-    #command: --innodb_use_native_aio=0
+    #recommended command to start on win os: --innodb_use_native_aio=0
 
     ports:
     - "3304:3306"
 
-#volumes:
+  #todo postgres
+
+#if need volumes:
 # - - my-datavolume:/var/lib/mysql
 #volumes:
   #-my-datavolume

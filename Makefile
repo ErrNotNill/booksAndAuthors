@@ -11,6 +11,6 @@ test:
 swag:
 	swag init -g cmd/main.go
 
-#migrate:
-	#migrate -path ./schema -database 'jdbc:mysql://(host=localhost,port=3306,key1=value1)/mysql' up
+migrate:
+	migrate -path ./schema -database 'jdbc:mysql://(host=localhost,port=3306,key1=value1)/mysql' up
 

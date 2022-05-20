@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package library;
-//option go_package = "github.com/protocolbuffers/protobuf-go";
+
 option go_package = "service/grpc";
 
 message Book {
@@ -9,6 +9,7 @@ message Book {
   int32 id = 2;
   string pid=3;
   string author=4;
+  string publishDate=5;
 }
 
 message Author {
@@ -65,22 +66,4 @@ service BooksService {
   rpc ListBooks (ListBookRequest) returns (stream ListBookResponse); // Для потоковой передачи с сервера
 }
 
-/*todo struct Repository with 2 Interfaces in package repository
-BooksCrud:
-   CreateBook
-   GetBook
-   GetAllBooks
-   UpdateBook
-   DeleteBook
-AuthorsCrud:
-   CreateAuthor
-   GetAuthor
-   GetAllAuthors
-   UpdateAuthor
-   DeleteAuthor
-*/
-
-/* todo 1 Handler struct with 1 field - pointer to struct Repository in package repository
-
-
- */
+//todo Authors
